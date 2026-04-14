@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concord Locksmith — Licensed, Trusted, Est. 1947</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Oswald:wght@400;500;600;700&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="logo.png" alt="Concord Locksmith" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-name">Concord Locksmith</span>
+          <span class="logo-since">Est. 1947</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="why.html">Why Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="tel:9256891534" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.11 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        (925) 689-1534
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay">
+    <button class="mobile-close" id="mobileClose" aria-label="Close">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="mobile-nav">
+      <a href="services.html" class="m-link">Services</a>
+      <a href="index.html#story" class="m-link">Our Story</a>
+      <a href="why.html" class="m-link">Why Us</a>
+      <a href="contact.html" class="m-link">Contact</a>
+      <div class="m-divider"></div>
+      <a href="tel:9256891534" class="m-link m-phone">(925) 689-1534</a>
+    </nav>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <video id="heroVideo" autoplay muted playsinline>
+        <source src="https://static.videezy.com/system/resources/previews/000/042/860/original/welder_100fps.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-line"></span>
+        <span>Serving Concord Since 1947</span>
+        <span class="badge-line"></span>
+      </div>
+
+      <h1>
+        <span class="h1-line">Your Trusted</span>
+        <span class="h1-line h1-italic">Locksmith.</span>
+      </h1>
+
+      <p class="hero-sub">Three generations of honest work. Licensed, bonded, and backed by a 100% satisfaction guarantee.</p>
+
+      <div class="hero-actions">
+        <a href="tel:9256891534" class="btn-primary">
+          Call Now &mdash; 925-689-1534
+        </a>
+        <a href="#services" class="btn-ghost">
+          View Services
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-stat">
+        <span class="hs-num" data-target="75">0</span><span class="hs-plus">+</span>
+        <span class="hs-label">Years</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hs-num">5</span><span class="hs-plus">&#9733;</span>
+        <span class="hs-label">Rated</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hs-num">100</span><span class="hs-plus">%</span>
+        <span class="hs-label">Guaranteed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST STRIP ═══ -->
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Licensed &amp; Bonded
+      </div>
+      <div class="trust-dot"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        BBB Accredited
+      </div>
+      <div class="trust-dot"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        Nextdoor Faves 2024
+      </div>
+      <div class="trust-dot"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Family Owned &amp; Operated
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section class="services" id="services">
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="section-tag">What We Do</span>
+        <h2>Expert <em>Services</em></h2>
+        <p class="section-intro">From emergency lockouts to full commercial security &mdash; we handle it all with the precision and care of a 75-year-old craft.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="svc-card">
+          <div class="svc-img">
+            <img src="images/residential-locksmith.jpg" alt="Residential locksmith" loading="lazy" />
+          </div>
+          <div class="svc-body">
+            <span class="svc-num">01</span>
+            <h3>Residential</h3>
+            <p>Keep your family safe with expert lock repair, rekeying, smart lock installation, and emergency lockout help.</p>
+            <ul>
+              <li>Emergency Lockout Assistance</li>
+              <li>Lock Rekeying &amp; Replacement</li>
+              <li>Smart Lock Installation</li>
+              <li>Key Duplication</li>
+            </ul>
+            <a href="tel:9256891534" class="svc-link">Call for Service <span>&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-img">
+            <img src="images/commercial-locksmith.jpg" alt="Commercial locksmith" loading="lazy" />
+          </div>
+          <div class="svc-body">
+            <span class="svc-num">02</span>
+            <h3>Commercial</h3>
+            <p>Master key systems, card access control, and custom security solutions for businesses of every size.</p>
+            <ul>
+              <li>Master Key Systems</li>
+              <li>Card Access Control</li>
+              <li>Panic Hardware &amp; Exit Alarms</li>
+              <li>Secured Keyway Systems</li>
+            </ul>
+            <a href="tel:9256891534" class="svc-link">Call for Service <span>&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-img">
+            <img src="images/automotive-locksmith.jpg" alt="Automotive locksmith" loading="lazy" />
+          </div>
+          <div class="svc-body">
+            <span class="svc-num">03</span>
+            <h3>Automotive</h3>
+            <p>Locked out of your car? Lost your key fob? We program transponder keys and remotes for most makes.</p>
+            <ul>
+              <li>Car Key Programming</li>
+              <li>Transponder Keys &amp; Fobs</li>
+              <li>Emergency Lockout</li>
+              <li>Ignition Repair</li>
+            </ul>
+            <a href="tel:9256891534" class="svc-link">Call for Service <span>&rarr;</span></a>
+          </div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-img">
+            <img src="images/safes.jpg" alt="Safes and security" loading="lazy" />
+          </div>
+          <div class="svc-body">
+            <span class="svc-num">04</span>
+            <h3>Safes &amp; Security</h3>
+            <p>Digital, dial, and gun safes &mdash; sold, delivered, and serviced. Plus keyless entry and self-defense products.</p>
+            <ul>
+              <li>Digital &amp; Combination Safes</li>
+              <li>Gun &amp; Jewelry Safes</li>
+              <li>Safe Opening &amp; Repair</li>
+              <li>Keyless Entry Systems</li>
+            </ul>
+            <a href="tel:9256891534" class="svc-link">Call for Service <span>&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EMERGENCY BAND ═══ -->
+  <div class="emergency-band">
+    <div class="emg-inner">
+      <div class="emg-left">
+        <span class="emg-dot"></span>
+        <strong>Locked Out Right Now?</strong>
+      </div>
+      <p>We respond fast. Don't wait outside &mdash; call us immediately for emergency lockout service.</p>
+      <a href="tel:9256891534" class="btn-primary btn-light">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.11 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        925-689-1534
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ STORY ═══ -->
+  <section class="story" id="story">
+    <div class="section-wrap">
+      <div class="story-grid">
+        <div class="story-photos">
+          <div class="story-main-photo">
+            <img
+              src="images/concord-locksmith-storefront.jpg"
+              alt="Concord Locksmith storefront"
+              loading="lazy"
+            />
+            <div class="photo-badge">
+              <span class="pb-year">1947</span>
+              <span class="pb-text">Downtown<br/>Concord</span>
+            </div>
+          </div>
+          <div class="story-secondary">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" alt="Locksmith technician" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="story-text">
+          <span class="section-tag">Our Story</span>
+          <h2>A Concord Institution Since <em>1947.</em></h2>
+          <div class="story-rule"></div>
+          <p>Concord Locksmith has been part of this community for over 75 years &mdash; still family-owned, still in downtown Concord, built on the same foundation of honesty and honest work that started in 1947.</p>
+          <p>We're not a call center. We're your neighbors. Every technician carries full credentials, arrives in a marked vehicle, and backs every job with a complete satisfaction guarantee.</p>
+
+          <div class="story-credentials">
+            <div class="cred-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Licensed, Bonded &amp; Insured
+            </div>
+            <div class="cred-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              Family-Owned &amp; Operated
+            </div>
+            <div class="cred-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Current TWIC Card Certification
+            </div>
+            <div class="cred-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              In-Shop &amp; Mobile Service
+            </div>
+          </div>
+
+          <div class="story-hours">
+            <h4>Business Hours</h4>
+            <table>
+              <tr><td>Mon, Wed&ndash;Fri</td><td>8:30 AM &ndash; 5:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>9:30 AM &ndash; 5:00 PM</td></tr>
+              <tr><td>Sat &ndash; Sun</td><td>Closed</td></tr>
+              <tr class="emg-hours"><td>After Hours</td><td>Limited Emergency Service</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PHOTO BREAK ═══ -->
+  <div class="photo-break">
+    <div class="pb-grid">
+      <div class="pb-cell">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="Locksmith cutting keys" loading="lazy" />
+        <span class="pb-label">Precision Craft</span>
+      </div>
+      <div class="pb-cell">
+        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=80" alt="Keys and hardware" loading="lazy" />
+      </div>
+      <div class="pb-cell pb-quote-cell">
+        <blockquote>&ldquo;Built on integrity and honest work since 1947.&rdquo;</blockquote>
+        <a href="#story" class="btn-primary">Our Story</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ WHY US ═══ -->
+  <section class="why" id="why">
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="section-tag">Why Choose Us</span>
+        <h2>The Right <em>Choice.</em></h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="wc-top">
+            <span class="wc-num">01</span>
+            <div class="wc-rule"></div>
+          </div>
+          <h3>Vetted &amp; Verified</h3>
+          <p>Our technicians carry photo ID, arrive in marked vehicles, and present credentials upfront. Don't let a stranger into your home without verification.</p>
+        </div>
+        <div class="why-card">
+          <div class="wc-top">
+            <span class="wc-num">02</span>
+            <div class="wc-rule"></div>
+          </div>
+          <h3>Transparent Pricing</h3>
+          <p>We quote before we work &mdash; no bait-and-switch, no surprise fees. What we say it costs is what you pay. That's been our policy for 75 years.</p>
+        </div>
+        <div class="why-card">
+          <div class="wc-top">
+            <span class="wc-num">03</span>
+            <div class="wc-rule"></div>
+          </div>
+          <h3>Fast Response</h3>
+          <p>Emergency lockouts don't wait for business hours. We offer rapid response throughout Concord and Contra Costa County.</p>
+        </div>
+        <div class="why-card">
+          <div class="wc-top">
+            <span class="wc-num">04</span>
+            <div class="wc-rule"></div>
+          </div>
+          <h3>Community Trusted</h3>
+          <p>Nextdoor Neighborhood Fave 2024. BBB accredited. Hundreds of 5-star reviews. We've earned our reputation neighbor by neighbor.</p>
+        </div>
+      </div>
+
+      <div class="why-cta">
+        <span>Ready to get started?</span>
+        <a href="tel:9256891534" class="btn-primary">Call 925-689-1534</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="contact" id="contact">
+    <div class="section-wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-tag tag-light">Get In Touch</span>
+          <h2 class="h2-light">Come See Us or <em>Call Anytime.</em></h2>
+          <p class="contact-desc">We're located in downtown Concord, directly across from the Sugar Plum Diner on the corner of Concord Blvd and Colfax Ave.</p>
+
+          <div class="contact-details">
+            <div class="cd-row">
+              <div class="cd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.11 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              </div>
+              <div>
+                <span class="cd-label">Phone</span>
+                <a href="tel:9256891534" class="cd-value cd-phone">(925) 689-1534</a>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <span class="cd-label">Location</span>
+                <span class="cd-value">Concord Blvd &amp; Colfax Ave<br/>Concord, CA</span>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <span class="cd-label">Hours</span>
+                <span class="cd-value">Mon &amp; Wed&ndash;Fri: 8:30&ndash;5pm<br/>Tue: 9:30&ndash;5pm &nbsp;|&nbsp; Sat&ndash;Sun: Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <div class="map-frame">
+            <iframe
+              title="Concord Locksmith Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149!2d-122.031!3d37.977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808ff57a48a9b2e5%3A0x1c3f6d4f3d0f1e!2sConcord%20Blvd%20%26%20Colfax%20Ave%2C%20Concord%2C%20CA!5e0!3m2!1sen!2sus!4v1"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map-actions">
+            <a href="https://maps.google.com/?q=Concord+Locksmith+Concord+CA" target="_blank" rel="noopener" class="btn-ghost btn-ghost-light">
+              Open in Google Maps
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="tel:9256891534" class="btn-primary btn-light">Call to Schedule</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="logo.png" alt="Concord Locksmith" class="logo-img logo-img-sm" />
+          <span class="fl-name">Concord Locksmith</span>
+        </div>
+        <p>Trusted locksmith services in Concord and Contra Costa County since 1947. Licensed, bonded, family-owned.</p>
+        <a href="tel:9256891534" class="footer-phone">(925) 689-1534</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="#services">Residential</a>
+        <a href="#services">Commercial</a>
+        <a href="#services">Automotive</a>
+        <a href="#services">Safes &amp; Security</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#story">Our Story</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Hours</h5>
+        <p>Mon &amp; Wed&ndash;Fri: 8:30&ndash;5pm</p>
+        <p>Tue: 9:30&ndash;5pm</p>
+        <p>Sat&ndash;Sun: Closed</p>
+        <p class="footer-emg"><em>Limited after-hours emergency service available</em></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Concord Locksmith. All rights reserved.</span>
+      <span>Est. 1947 &bull; Licensed &bull; Concord, CA</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

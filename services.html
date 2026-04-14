@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Concord Locksmith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Oswald:wght@400;500;600;700&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="Concord Locksmith" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-name">Concord Locksmith</span>
+          <span class="logo-since">Est. 1947</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html#story">Our Story</a></li>
+        <li><a href="why.html">Why Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="tel:9256891534" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.11 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        (925) 689-1534
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="mobile-overlay" id="mobileOverlay">
+    <button class="mobile-close" id="mobileClose" aria-label="Close">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="mobile-nav">
+      <a href="services.html" class="m-link">Services</a>
+      <a href="index.html#story" class="m-link">Our Story</a>
+      <a href="why.html" class="m-link">Why Us</a>
+      <a href="contact.html" class="m-link">Contact</a>
+      <div class="m-divider"></div>
+      <a href="tel:9256891534" class="m-link m-phone">(925) 689-1534</a>
+    </nav>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80" alt="Locksmith at work" />
+      <div class="page-hero-overlay"></div>
+    </div>
+    <div class="page-hero-content">
+      <span class="section-tag tag-light">Our Services</span>
+      <h1>Expert Services for Every Need</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">&rsaquo;</span>
+        <span>Services</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ═══ RESIDENTIAL ═══ -->
+  <section class="detail-section" id="residential">
+    <div class="section-wrap">
+      <div class="detail-grid">
+        <div class="detail-img">
+          <img src="images/residential-locksmith.jpg" alt="Residential locksmith services" loading="lazy" />
+        </div>
+        <div class="detail-text">
+          <span class="section-tag">01 &mdash; Residential</span>
+          <h2>Home Security You Can <em>Trust</em></h2>
+          <p>The unexpected happens, and that's why we're here. Our licensed and bonded technicians provide complete residential locksmith services &mdash; from emergency lockouts to full lock replacement and rekeying. We stand behind our work 100%.</p>
+          <ul class="detail-list">
+            <li>Lock Repair &amp; Replacement</li>
+            <li>Lock Rekeying</li>
+            <li>Lock Installation</li>
+            <li>Key Duplication</li>
+            <li>Emergency Lockout Assistance</li>
+            <li>Deadbolt Installation</li>
+            <li>Smart Lock Installation</li>
+            <li>Security Assessments</li>
+          </ul>
+          <a href="tel:9256891534" class="btn-primary">Call for Service &mdash; 925-689-1534</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMMERCIAL ═══ -->
+  <section class="detail-section" id="commercial">
+    <div class="section-wrap">
+      <div class="detail-grid detail-reverse">
+        <div class="detail-img">
+          <img src="images/commercial-locksmith.jpg" alt="Commercial locksmith services" loading="lazy" />
+        </div>
+        <div class="detail-text">
+          <span class="section-tag">02 &mdash; Commercial</span>
+          <h2>Business Security <em>Solutions</em></h2>
+          <p>Protect your business with professional-grade lock and access control solutions. We work with offices, retail storefronts, warehouses, and industrial facilities across Contra Costa County &mdash; delivering master key systems, restricted keyways, and modern access control.</p>
+          <ul class="detail-list">
+            <li>Lock Repair &amp; Replacement</li>
+            <li>Master Key Systems</li>
+            <li>Safe Work</li>
+            <li>Keyless Entry Systems</li>
+            <li>Door Closers</li>
+            <li>Panic Hardware</li>
+            <li>Exit Alarm Devices</li>
+            <li>High-Security Locks</li>
+          </ul>
+          <a href="tel:9256891534" class="btn-primary">Call for Service &mdash; 925-689-1534</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AUTOMOTIVE ═══ -->
+  <section class="detail-section" id="automotive">
+    <div class="section-wrap">
+      <div class="detail-grid">
+        <div class="detail-img">
+          <img src="images/automotive-locksmith.jpg" alt="Automotive locksmith services" loading="lazy" />
+        </div>
+        <div class="detail-text">
+          <span class="section-tag">03 &mdash; Automotive</span>
+          <h2>Car Key &amp; Lock <em>Experts</em></h2>
+          <p>Locked out of your car? Lost your only key fob? We handle it all. Our automotive locksmith team programs keys and remotes for most makes and models, provides emergency lockout assistance, and repairs ignitions &mdash; with the professionalism you expect from a shop that's been here since 1947.</p>
+          <ul class="detail-list">
+            <li>Key &amp; Remote Programming</li>
+            <li>Lock &amp; Ignition Switch Repair</li>
+            <li>Lock &amp; Ignition Replacement</li>
+            <li>Key Duplication</li>
+            <li>Emergency Lockout</li>
+            <li>Lock Rekeying</li>
+            <li>Transponder Keys &amp; Fobs</li>
+            <li>Key Extraction</li>
+          </ul>
+          <a href="tel:9256891534" class="btn-primary">Call for Service &mdash; 925-689-1534</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SAFES & SECURITY ═══ -->
+  <section class="detail-section" id="safes">
+    <div class="section-wrap">
+      <div class="detail-grid detail-reverse">
+        <div class="detail-img">
+          <img src="images/safes.jpg" alt="Safes and security products" loading="lazy" />
+        </div>
+        <div class="detail-text">
+          <span class="section-tag">04 &mdash; Safes</span>
+          <h2>Safes &amp; <em>Vaults</em></h2>
+          <p>Digital and dial combination safes &mdash; sold, delivered, and serviced. Whether you need a gun safe for your home, a floor safe for your business, or a combination change on an existing unit, we have the expertise and inventory. Free delivery to Concord, CA.</p>
+          <ul class="detail-list">
+            <li>Digital Combination Safes</li>
+            <li>Dial Combination Safes</li>
+            <li>Gun &amp; Jewelry Safes</li>
+            <li>Fire-Rated Safes</li>
+            <li>Wall &amp; Floor Safes</li>
+            <li>Safe Opening &amp; Repair</li>
+            <li>Safe Combination Changes</li>
+            <li>Free Delivery to Concord</li>
+          </ul>
+          <a href="tel:9256891534" class="btn-primary">Call for Service &mdash; 925-689-1534</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KEYLESS ENTRY ═══ -->
+  <section class="detail-section" id="keyless">
+    <div class="section-wrap">
+      <div class="detail-grid">
+        <div class="detail-img">
+          <img src="images/keycard-access-control.jpg" alt="Keyless entry and access control systems" loading="lazy" />
+        </div>
+        <div class="detail-text">
+          <span class="section-tag">05 &mdash; Keyless Entry</span>
+          <h2>Access Control <em>Systems</em></h2>
+          <p>Modern access control for homes and businesses. From stand-alone keyless entry to full remote access management systems with pin and card credentials &mdash; we design, install, and support solutions that keep your property secure without the hassle of traditional keys.</p>
+          <ul class="detail-list">
+            <li>Access Control Systems</li>
+            <li>Stand Alone Keyless Entry</li>
+            <li>Push Button Access</li>
+            <li>Remote Access Management</li>
+            <li>Pin Credentials</li>
+            <li>Card Credentials</li>
+            <li>Smart Lock Integration</li>
+            <li>System Maintenance</li>
+          </ul>
+          <a href="tel:9256891534" class="btn-primary">Call for Service &mdash; 925-689-1534</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SELF DEFENSE ═══ -->
+  <section class="detail-section" id="self-defense">
+    <div class="section-wrap">
+      <div class="detail-grid detail-reverse">
+        <div class="detail-img">
+          <img src="images/mace-stun-guns.jpg" alt="Self defense products - pepper spray and stun guns" loading="lazy" />
+        </div>
+        <div class="detail-text">
+          <span class="section-tag">06 &mdash; Self Defense</span>
+          <h2>Personal <em>Protection</em></h2>
+          <p>High quality personal protection products with the training and support to use them safely. We carry pepper spray (Mace), stun guns, and other self-defense essentials &mdash; all backed by our quality assurance and knowledgeable staff.</p>
+          <ul class="detail-list">
+            <li>Pepper Spray (Mace)</li>
+            <li>Stun Guns</li>
+            <li>High Quality Assurance</li>
+            <li>Training &amp; Support</li>
+            <li>Personal Safety Devices</li>
+            <li>Travel Security Products</li>
+          </ul>
+          <a href="tel:9256891534" class="btn-primary">Call for Service &mdash; 925-689-1534</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EMERGENCY BAND ═══ -->
+  <div class="emergency-band">
+    <div class="emg-inner">
+      <div class="emg-left">
+        <span class="emg-dot"></span>
+        <strong>Need Emergency Service?</strong>
+      </div>
+      <p>We respond fast. Don't wait outside &mdash; call us immediately for emergency lockout service.</p>
+      <a href="tel:9256891534" class="btn-primary btn-light">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.11 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        925-689-1534
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="logo.png" alt="Concord Locksmith" class="logo-img logo-img-sm" />
+          <span class="fl-name">Concord Locksmith</span>
+        </div>
+        <p>Trusted locksmith services in Concord and Contra Costa County since 1947. Licensed, bonded, family-owned.</p>
+        <a href="tel:9256891534" class="footer-phone">(925) 689-1534</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="services.html#residential">Residential</a>
+        <a href="services.html#commercial">Commercial</a>
+        <a href="services.html#automotive">Automotive</a>
+        <a href="services.html#safes">Safes &amp; Security</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="index.html#story">Our Story</a>
+        <a href="why.html">Why Choose Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Hours</h5>
+        <p>Mon &amp; Wed&ndash;Fri: 8:30&ndash;5pm</p>
+        <p>Tue: 9:30&ndash;5pm</p>
+        <p>Sat&ndash;Sun: Closed</p>
+        <p class="footer-emg"><em>Limited after-hours emergency service available</em></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Concord Locksmith. All rights reserved.</span>
+      <span>Est. 1947 &bull; Licensed &bull; Concord, CA</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
