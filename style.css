@@ -1527,7 +1527,7 @@ a.cd-value-dark:hover {
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: 1fr; }
-  .svc-card { grid-template-columns: 180px 1fr; }
+  .svc-card { grid-template-columns: 200px 1fr; }
   .story-grid { grid-template-columns: 1fr; gap: 3rem; }
   .contact-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1540,6 +1540,7 @@ a.cd-value-dark:hover {
   .pb-cell:first-child { grid-column: 1 / 3; height: 260px; }
   .detail-grid { gap: 3rem; }
   .contact-page-grid { grid-template-columns: 1fr; }
+  .cred-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .nav-links, .nav-cta { display: none; }
