@@ -1121,6 +1121,36 @@ a.cd-value:hover { color: var(--white); }
   margin-bottom: 1rem;
 }
 
+/* Plain variant (explicit) + safety net (auto-applies when no .page-hero-bg).
+   The :has() fallback prevents the "white text on cream" bug if a page hero
+   is added without a background image. */
+.page-hero-plain,
+.page-hero:not(:has(.page-hero-bg)) {
+  background: var(--cream);
+}
+.page-hero-plain .page-hero-content h1,
+.page-hero:not(:has(.page-hero-bg)) .page-hero-content h1 {
+  color: var(--dark);
+}
+.page-hero-plain .breadcrumb,
+.page-hero-plain .breadcrumb a,
+.page-hero:not(:has(.page-hero-bg)) .breadcrumb,
+.page-hero:not(:has(.page-hero-bg)) .breadcrumb a {
+  color: var(--text-mid);
+}
+.page-hero-plain .breadcrumb a:hover,
+.page-hero:not(:has(.page-hero-bg)) .breadcrumb a:hover {
+  color: var(--red);
+}
+.page-hero-plain .breadcrumb-sep,
+.page-hero:not(:has(.page-hero-bg)) .breadcrumb-sep {
+  color: var(--text-light);
+}
+.page-hero-plain .tag-light,
+.page-hero:not(:has(.page-hero-bg)) .tag-light {
+  color: var(--red);
+}
+
 /* Breadcrumb */
 .breadcrumb {
   display: flex;
