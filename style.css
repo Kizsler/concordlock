@@ -1586,6 +1586,13 @@ a.cd-value:hover { color: var(--white); }
   font-size: 0.95rem;
   padding: 1rem 2rem;
 }
+.form-status {
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  min-height: 1.2em;
+}
+.form-status[data-kind="success"] { color: #1f7a3d; }
+.form-status[data-kind="error"]   { color: var(--red); }
 .form-note {
   margin-top: 1.25rem;
   font-size: 0.82rem;

@@ -122,7 +122,7 @@ sections.forEach(s => secObs.observe(s));
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {
   const videoSources = [
-    'https://static.videezy.com/system/resources/previews/000/042/860/original/welder_100fps.mp4',
+    'https://videos.pexels.com/video-files/35999369/15264738_2560_1440_60fps.mp4',
     'https://videos.pexels.com/video-files/2070044/2070044-hd_1920_1080_25fps.mp4'
   ];
   let currentIndex = 0;
@@ -136,6 +136,50 @@ if (heroVideo) {
       heroVideo.play();
       heroVideo.style.opacity = '1';
     }, 400);
+  });
+}
+
+/* ── CONTACT FORM ────────────────────────────────────────── */
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Message';
+
+  function setStatus(text, kind) {
+    if (!statusEl) return;
+    statusEl.textContent = text;
+    statusEl.dataset.kind = kind || '';
+  }
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(contactForm));
+    if (!data['full-name'] || !data.email || !data.message) {
+      setStatus('Please fill in your name, email, and message.', 'error');
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    setStatus('', '');
+    try {
+      const r = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) {
+        throw new Error(j.error || 'Send failed');
+      }
+      contactForm.reset();
+      setStatus("Thanks — we'll be in touch shortly.", 'success');
+    } catch (err) {
+      setStatus("Sorry, that didn't go through. Please call (925) 689-1534.", 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
   });
 }
 

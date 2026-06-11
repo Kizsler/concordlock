@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Concord Locksmith — Site Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #cf2e2e;
+    --red-dk: #a02222;
+    --dark: #1a1a1a;
+    --text: #2d2d2d;
+    --text-mid: #555;
+    --text-light: #888;
+    --warm-white: #faf8f4;
+    --cream: #f3efe7;
+    --border: #e2ddd2;
+    --code-bg: #f6f3ec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: white; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 10.5pt; line-height: 1.55; }
+  body { padding: 0; }
+
+  /* PRINT */
+  @page { size: Letter; margin: 0.7in 0.65in 0.75in 0.65in; }
+  .page {
+    padding: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+  @media print {
+    h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+    pre, table, .box, .diagram { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--dark); letter-spacing: -0.01em; }
+  h1 { font-size: 32pt; line-height: 1.05; font-weight: 800; }
+  h2 { font-size: 18pt; font-weight: 700; margin: 18pt 0 8pt; padding-bottom: 4pt; border-bottom: 1.5pt solid var(--red); }
+  h3 { font-size: 13pt; font-weight: 700; margin: 14pt 0 4pt; }
+  h4 { font-size: 11pt; font-weight: 600; margin: 10pt 0 3pt; color: var(--text); font-family: 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  p { margin: 6pt 0; }
+  ul, ol { margin: 6pt 0 8pt 18pt; }
+  li { margin: 2pt 0; }
+
+  code, pre, .mono { font-family: 'JetBrains Mono', monospace; font-size: 9pt; }
+  code { background: var(--code-bg); padding: 1pt 4pt; border-radius: 3pt; color: var(--red-dk); font-size: 9pt; }
+  pre { background: var(--code-bg); border: 1pt solid var(--border); border-radius: 4pt; padding: 8pt 10pt; margin: 6pt 0; overflow: hidden; white-space: pre-wrap; word-break: break-word; }
+  pre code { background: transparent; padding: 0; color: var(--text); }
+
+  table { width: 100%; border-collapse: collapse; margin: 8pt 0; font-size: 9.5pt; }
+  th, td { border: 1pt solid var(--border); padding: 5pt 7pt; text-align: left; vertical-align: top; }
+  th { background: var(--cream); font-weight: 600; font-family: 'DM Sans', sans-serif; }
+
+  .meta { color: var(--text-light); font-size: 9.5pt; }
+  .tag { display: inline-block; font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+
+  .cover { padding: 1.5in 0 0; }
+  .cover .tag { display: block; margin-bottom: 14pt; font-size: 9pt; }
+  .cover h1 { font-size: 44pt; line-height: 1.0; }
+  .cover .sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18pt; color: var(--text-mid); margin-top: 14pt; }
+  .cover .date { margin-top: 60pt; color: var(--text-light); font-size: 10pt; }
+  .cover .who { margin-top: 4pt; font-size: 10pt; color: var(--text-mid); }
+  .cover hr { border: 0; border-top: 2pt solid var(--red); margin: 30pt 0; width: 80pt; }
+
+  .toc { columns: 1; }
+  .toc-row { display: flex; justify-content: space-between; border-bottom: 0.5pt dotted var(--border); padding: 4pt 0; font-size: 10pt; }
+  .toc-row .num { color: var(--text-light); }
+
+  .box { background: var(--warm-white); border: 1pt solid var(--border); border-left: 3pt solid var(--red); padding: 10pt 12pt; margin: 10pt 0; border-radius: 3pt; }
+  .box-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 9.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 4pt; }
+
+  .diagram { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; line-height: 1.4; background: var(--warm-white); border: 1pt solid var(--border); padding: 14pt 16pt; border-radius: 4pt; white-space: pre; overflow: hidden; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+  .kv { display: grid; grid-template-columns: 110pt 1fr; gap: 4pt 10pt; font-size: 10pt; }
+  .kv dt { font-weight: 600; color: var(--text); }
+  .kv dd { color: var(--text-mid); }
+
+  .stack { display: grid; grid-template-columns: 130pt 1fr; gap: 6pt 12pt; align-items: baseline; margin: 10pt 0; }
+  .stack-key { font-family: 'DM Sans', sans-serif; font-weight: 600; color: var(--red); font-size: 9.5pt; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stack-val { font-size: 10pt; }
+
+  .footer-mark { position: relative; margin-top: 28pt; padding-top: 8pt; border-top: 0.5pt solid var(--border); font-size: 8.5pt; color: var(--text-light); display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<!-- ─── COVER ──────────────────────────────────────────── -->
+<section class="page cover">
+  <span class="tag">Site Documentation</span>
+  <h1>Concord<br/>Locksmith.</h1>
+  <p class="sub">A Concord Institution Since 1947</p>
+  <hr/>
+  <p class="meta">
+    Live at <strong>concordlock.com</strong><br/>
+    Hosted on <strong>fly.io</strong> &middot; Code on <strong>GitHub</strong> &middot; Email via <strong>Resend</strong>
+  </p>
+  <p class="date">Generated April 29, 2026</p>
+  <p class="who">Prepared for the site owner — operations, deployment &amp; maintenance reference.</p>
+</section>
+
+<!-- ─── TABLE OF CONTENTS ──────────────────────────────── -->
+<section class="page">
+  <span class="tag">Contents</span>
+  <h2 style="margin-top:6pt;">What's in this document</h2>
+  <div class="toc">
+    <div class="toc-row"><span>01 &mdash; Overview</span><span class="num">3</span></div>
+    <div class="toc-row"><span>02 &mdash; System Architecture</span><span class="num">4</span></div>
+    <div class="toc-row"><span>03 &mdash; Hosting on fly.io</span><span class="num">5</span></div>
+    <div class="toc-row"><span>04 &mdash; Domain &amp; DNS (Network Solutions + Cloudflare)</span><span class="num">6</span></div>
+    <div class="toc-row"><span>05 &mdash; SSL / HTTPS</span><span class="num">7</span></div>
+    <div class="toc-row"><span>06 &mdash; Tech Stack &amp; Code Layout</span><span class="num">8</span></div>
+    <div class="toc-row"><span>07 &mdash; Page Inventory</span><span class="num">9</span></div>
+    <div class="toc-row"><span>08 &mdash; Contact Form &amp; Resend</span><span class="num">10</span></div>
+    <div class="toc-row"><span>09 &mdash; Design System</span><span class="num">11</span></div>
+    <div class="toc-row"><span>10 &mdash; Deployment Workflow</span><span class="num">12</span></div>
+    <div class="toc-row"><span>11 &mdash; Costs &amp; Billing</span><span class="num">13</span></div>
+    <div class="toc-row"><span>12 &mdash; Maintenance &amp; Common Tasks</span><span class="num">14</span></div>
+    <div class="toc-row"><span>13 &mdash; Gotchas &amp; Known Quirks</span><span class="num">15</span></div>
+    <div class="toc-row"><span>14 &mdash; Cloudflare's role (DNS only, today)</span><span class="num">16</span></div>
+  </div>
+</section>
+
+<!-- ─── 01 OVERVIEW ─────────────────────────────────────── -->
+<section class="page">
+  <span class="tag">01</span>
+  <h2>Overview</h2>
+  <p>The Concord Locksmith website is a small, fast, content-driven marketing site for a family-owned locksmith business in downtown Concord, CA, established 1947. The site introduces the business, lists services across six specialties, and accepts customer contact submissions that route to the shop's email.</p>
+
+  <h3>What the site does</h3>
+  <ul>
+    <li>Tells the story of a 75+ year family-owned locksmith</li>
+    <li>Markets six service categories: residential, commercial, automotive, safes &amp; vaults, keyless entry, self-defense products</li>
+    <li>Surfaces credentials &mdash; licensed, bonded, BBB accredited, Nextdoor Faves 2024</li>
+    <li>Provides phone CTA throughout (the primary conversion path is a phone call)</li>
+    <li>Accepts contact form submissions that email <code>service@concordlock.com</code></li>
+    <li>Shows business hours, address, and an embedded Google Map</li>
+  </ul>
+
+  <h3>What the site does <em>not</em> do</h3>
+  <ul>
+    <li>No e-commerce, no online payments, no scheduling/booking</li>
+    <li>No user accounts, login, or authentication</li>
+    <li>No CMS &mdash; content is edited directly in HTML files</li>
+    <li>No database &mdash; the site is functionally static plus a single email-sending endpoint</li>
+  </ul>
+
+  <h3>Audience</h3>
+  <p>Local customers in Concord and the surrounding Contra Costa County area searching for a trusted locksmith. The site is optimized for trust signals (years in business, credentials, real shop photos) over feature breadth.</p>
+</section>
+
+<!-- ─── 02 SYSTEM ARCHITECTURE ──────────────────────────── -->
+<section class="page">
+  <span class="tag">02</span>
+  <h2>System Architecture</h2>
+  <p>The site is a small Node.js/Express application that serves static HTML pages plus a single API endpoint for contact-form email delivery. The whole thing runs in a Docker container on fly.io. Cloudflare manages DNS but does not proxy traffic, so requests reach fly.io directly after the DNS lookup.</p>
+
+  <h3>Request flow (page view)</h3>
+  <div class="diagram">
+ ┌────────────┐                                ┌────────────────┐
+ │  User's    │ ── 1. Look up concordlock.com ▶│  Cloudflare    │
+ │  browser   │ ◀──── 2. Returns fly.io IP ────│  DNS only      │
+ └────────────┘                                └────────────────┘
+       │                                              ▲
+       │                                              │ (Cloudflare nameservers
+       │                                              │  are delegated by
+       │                                              │  Network Solutions where
+       │                                              │  the domain is registered)
+       │
+       │ 3. HTTPS connect to fly.io IP (traffic does NOT pass through Cloudflare)
+       ▼
+ ┌────────────────┐
+ │  fly.io edge   │
+ │   (anycast)    │
+ └────────────────┘
+         │
+         ▼
+ ┌────────────────┐
+ │  Firecracker   │
+ │  VM in EWR     │
+ │  ┌──────────┐  │
+ │  │ Node.js  │  │
+ │  │ Express  │  │
+ │  │ + Resend │  │
+ │  └──────────┘  │
+ └────────────────┘
+  </div>
+
+  <h3>Request flow (contact form submit)</h3>
+  <div class="diagram">
+ Browser ──POST /api/contact──▶ Express ──Resend SDK──▶ Resend API ──email──▶ service@concordlock.com
+   ▲                                                                                  │
+   └── { ok: true } ◀─────────────────────────────────────────────────────────────────┘
+  </div>
+
+  <h3>Components at a glance</h3>
+  <dl class="kv">
+    <dt>Frontend</dt><dd>Static HTML, plain CSS, vanilla JavaScript &mdash; no framework, no build step.</dd>
+    <dt>Backend</dt><dd>Node.js + Express. Single endpoint <code>POST /api/contact</code>, plus static-file serving for everything else.</dd>
+    <dt>Email</dt><dd>Resend API for transactional email. Domain <code>concordlock.com</code> is verified in Resend so mail is sent from <code>noreply@concordlock.com</code>.</dd>
+    <dt>Container</dt><dd><code>node:20-alpine</code> base image with the app and its dependencies bundled.</dd>
+    <dt>Host</dt><dd>fly.io, app name <code>concordlock</code>, region <code>ewr</code> (Newark, US east).</dd>
+    <dt>SSL</dt><dd>Let's Encrypt, auto-issued and auto-renewed by fly.io.</dd>
+    <dt>Domain</dt><dd>Registered at Network Solutions.</dd>
+    <dt>DNS</dt><dd>Managed at Cloudflare (free plan). Network Solutions delegates the nameservers to <code>martha.ns.cloudflare.com</code> and <code>nile.ns.cloudflare.com</code>. Records point directly at fly.io's IPs &mdash; "DNS only" (gray cloud) mode, no proxying.</dd>
+    <dt>Source code</dt><dd>GitHub, under the <code>B-Blocksmith</code> organization. Private repository at <code>github.com/B-Blocksmith/BNB-website-Redesign</code>, branch <code>main</code>.</dd>
+  </dl>
+</section>
+
+<!-- ─── 03 HOSTING ─────────────────────────────────────────── -->
+<section class="page">
+  <span class="tag">03</span>
+  <h2>Hosting on fly.io</h2>
+  <p>fly.io runs containers as Firecracker microVMs on physical hosts close to users. The Concord Locksmith app is named <code>concordlock</code> and runs as two machines in the Newark (<code>ewr</code>) region for redundancy.</p>
+
+  <h3>Key fly.io facts</h3>
+  <dl class="kv">
+    <dt>App name</dt><dd><code>concordlock</code></dd>
+    <dt>Region</dt><dd>EWR (Newark, US east) &mdash; chosen as a default; all Bay-Area traffic still hits fly's edge first, which is anycast/global.</dd>
+    <dt>Machines</dt><dd>2 Firecracker microVMs (for redundancy; one can serve all traffic if the other is down).</dd>
+    <dt>Auto-stop</dt><dd>Both machines automatically stop after a few minutes of no traffic and start again on the next request. First request after idle has a ~1-2 second cold start; subsequent requests are normal speed.</dd>
+    <dt>Public IPs</dt><dd>IPv4 (shared): <code>66.241.124.67</code><br/>IPv6 (dedicated): <code>2a09:8280:1::101:a867:0</code></dd>
+    <dt>Default hostname</dt><dd><code>concordlock.fly.dev</code> &mdash; always works as a backup if the custom domain has issues.</dd>
+    <dt>Image registry</dt><dd><code>registry.fly.io/concordlock</code> &mdash; each deploy is tagged <code>deployment-...</code>.</dd>
+  </dl>
+
+  <h3>fly.toml (deployment config)</h3>
+  <pre><code>app = "concordlock"
+primary_region = "ewr"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256</code></pre>
+
+  <h3>Useful fly CLI commands</h3>
+  <dl class="kv">
+    <dt><code>fly deploy</code></dt><dd>Build and deploy the current code to production.</dd>
+    <dt><code>fly status -a concordlock</code></dt><dd>Show current machine state, recent deploys, region.</dd>
+    <dt><code>fly logs -a concordlock</code></dt><dd>Tail live logs from both machines.</dd>
+    <dt><code>fly secrets list -a concordlock</code></dt><dd>List secret names (values are never shown).</dd>
+    <dt><code>fly secrets set KEY=VALUE -a concordlock</code></dt><dd>Set or rotate a secret. Triggers a rolling restart.</dd>
+    <dt><code>fly certs list -a concordlock</code></dt><dd>Show SSL certificates and their statuses.</dd>
+  </dl>
+</section>
+
+<!-- ─── 04 DOMAIN AND DNS ─────────────────────────────────── -->
+<section class="page">
+  <span class="tag">04</span>
+  <h2>Domain &amp; DNS</h2>
+  <p>Two services share responsibility for the domain. <strong>Network Solutions</strong> is the <em>registrar</em> &mdash; the company you pay annually to keep the name. <strong>Cloudflare</strong> is the <em>DNS host</em> &mdash; where the actual records (A, AAAA, CNAME, MX, TXT) live and get edited.</p>
+
+  <h3>How they connect</h3>
+  <ol>
+    <li>The domain <code>concordlock.com</code> is registered at <strong>Network Solutions</strong>.</li>
+    <li>At Network Solutions, the nameservers for the domain have been changed to <code>martha.ns.cloudflare.com</code> and <code>nile.ns.cloudflare.com</code>. This delegates DNS resolution to Cloudflare.</li>
+    <li>All DNS <em>records</em> are managed in the <strong>Cloudflare</strong> dashboard at <code>dash.cloudflare.com</code>.</li>
+    <li>For the website records, Cloudflare is in "DNS only" mode (gray-cloud icon next to each record). Cloudflare resolves the lookup but doesn't proxy traffic &mdash; the user's browser connects to fly.io's IP directly.</li>
+  </ol>
+
+  <h3>Current DNS records (in Cloudflare)</h3>
+  <table>
+    <tr><th>Type</th><th>Host</th><th>Value</th><th>Proxy</th><th>Purpose</th></tr>
+    <tr><td>A</td><td>@</td><td><code>66.241.124.67</code></td><td>DNS only</td><td>Apex IPv4 → fly.io edge</td></tr>
+    <tr><td>AAAA</td><td>@</td><td><code>2a09:8280:1::101:a867:0</code></td><td>DNS only</td><td>Apex IPv6 → fly.io edge</td></tr>
+    <tr><td>CNAME</td><td>www</td><td><code>concordlock.fly.dev</code></td><td>DNS only</td><td>www subdomain → fly.io app hostname</td></tr>
+    <tr><td>TXT/CNAME</td><td>(various)</td><td>(Resend DKIM/SPF/DMARC)</td><td>DNS only</td><td>Email sending verification for the domain in Resend.</td></tr>
+    <tr><td>MX</td><td>@</td><td>(your mail provider)</td><td>DNS only</td><td>Routes incoming mail to <code>service@concordlock.com</code> to whatever mailbox provider hosts it.</td></tr>
+  </table>
+
+  <h3>Where to make a DNS change</h3>
+  <ul>
+    <li><strong>For website / domain records:</strong> log in to Cloudflare → Websites → <code>concordlock.com</code> → DNS → Records.</li>
+    <li><strong>To change registrar info, billing, or transfer the domain:</strong> log in to Network Solutions.</li>
+    <li><strong>To change the nameservers themselves</strong> (e.g., move DNS away from Cloudflare): that happens at Network Solutions under "Manage" → nameserver settings. Don't change this unless you're consciously moving DNS.</li>
+  </ul>
+
+  <h3>Important notes</h3>
+  <ul>
+    <li><strong>Domain registration is separate from web hosting.</strong> Cancelling the old WordPress hosting does not affect the domain. Keep the registration paid at Network Solutions; let the WordPress hosting expire.</li>
+    <li><strong>If you move email providers</strong> (Google Workspace, Microsoft 365, etc.), update the MX records in <em>Cloudflare</em>, not Network Solutions. Cloudflare is now the source of truth for records.</li>
+    <li><strong>The Resend domain verification records</strong> live in Cloudflare. If Resend ever shows the domain as "unverified," check those TXT/CNAME records are still present.</li>
+  </ul>
+</section>
+
+<!-- ─── 05 SSL / HTTPS ────────────────────────────────────── -->
+<section class="page">
+  <span class="tag">05</span>
+  <h2>SSL / HTTPS</h2>
+  <p>HTTPS is provided by fly.io, which automatically issues and renews Let's Encrypt certificates as long as the DNS records point at fly. There is nothing to configure manually beyond running <code>fly certs add</code> once per hostname.</p>
+
+  <h3>Current certificates</h3>
+  <ul>
+    <li><code>concordlock.com</code> &mdash; Let's Encrypt, auto-renewed</li>
+    <li><code>www.concordlock.com</code> &mdash; Let's Encrypt, auto-renewed</li>
+    <li><code>concordlock.fly.dev</code> &mdash; managed by fly.io's wildcard cert (always works)</li>
+  </ul>
+
+  <h3>How fly.io issues certs</h3>
+  <p>When you run <code>fly certs add yourdomain.com</code>, fly.io initiates a Let's Encrypt ACME challenge. Because the DNS already points at fly's IPs, fly answers the HTTP-01 challenge automatically. The cert is issued within seconds and renews itself every ~60 days.</p>
+
+  <h3>HTTPS enforcement</h3>
+  <p>Plain HTTP requests are 301-redirected to HTTPS by fly's edge (<code>force_https = true</code> in <code>fly.toml</code>). Browsers will only ever see the HTTPS version.</p>
+
+  <div class="box">
+    <div class="box-title">If HTTPS breaks</div>
+    <p>Run <code>fly certs check concordlock.com -a concordlock</code> to see cert status. If issuance is stuck, the most common cause is DNS pointing somewhere other than fly.io. Verify with <code>nslookup concordlock.com</code> &mdash; it should return <code>66.241.124.67</code>.</p>
+  </div>
+</section>
+
+<!-- ─── 06 TECH STACK + CODE LAYOUT ────────────────────────── -->
+<section class="page">
+  <span class="tag">06</span>
+  <h2>Tech Stack &amp; Code Layout</h2>
+  <h3>Stack</h3>
+  <div class="stack">
+    <div class="stack-key">Runtime</div>          <div class="stack-val">Node.js 20 (Alpine Linux container)</div>
+    <div class="stack-key">Framework</div>        <div class="stack-val">Express 4</div>
+    <div class="stack-key">Email</div>            <div class="stack-val">Resend Node SDK</div>
+    <div class="stack-key">Frontend</div>         <div class="stack-val">Plain HTML, CSS, vanilla JS &mdash; no React, no build step</div>
+    <div class="stack-key">Container</div>        <div class="stack-val">Docker, image based on <code>node:20-alpine</code></div>
+    <div class="stack-key">Source control</div>   <div class="stack-val">Git + GitHub</div>
+    <div class="stack-key">Deploy target</div>    <div class="stack-val">fly.io</div>
+  </div>
+
+  <h3>Repository layout</h3>
+  <pre><code>concordlock/
+├── index.html               Homepage
+├── services.html            Services hub
+├── residential.html         Service detail pages
+├── commercial.html
+├── automotive.html
+├── safes.html
+├── keyless.html
+├── self-defense.html
+├── story.html               About / story page
+├── why.html                 Why choose us
+├── contact.html             Contact form page
+│
+├── style.css                Global stylesheet (~46 KB)
+├── main.js                  Client-side JS (mobile menu, scroll animations,
+│                              hero video playlist, contact form submit handler)
+├── server.js                Node/Express server
+├── package.json             Node deps
+├── package-lock.json        Locked dep versions
+│
+├── Dockerfile               Container build (node:20-alpine)
+├── .dockerignore            Excludes node_modules, .git, etc. from image
+├── .gitignore               Excludes node_modules, .env, etc. from git
+├── fly.toml                 fly.io app config
+│
+├── images/                  Real shop photos + service category images
+├── logo.png                 Brand mark
+├── favicon.ico, icon-*.png  Favicon set
+│
+└── docs/
+    └── site-documentation.html  This document's source</code></pre>
+
+  <h3>What lives where</h3>
+  <ul>
+    <li><strong>Page content</strong> &mdash; edit the <code>.html</code> files directly. There are no templates.</li>
+    <li><strong>Styles</strong> &mdash; <code>style.css</code> is the single source of truth for layout, colors, typography.</li>
+    <li><strong>Behavior</strong> &mdash; <code>main.js</code> contains all client-side JS.</li>
+    <li><strong>API logic</strong> &mdash; <code>server.js</code> &mdash; the contact form handler, basic input validation, Resend integration.</li>
+    <li><strong>Secrets</strong> &mdash; never in code. Stored as fly.io secrets and read via <code>process.env</code>.</li>
+  </ul>
+</section>
+
+<!-- ─── 07 PAGE INVENTORY ─────────────────────────────────── -->
+<section class="page">
+  <span class="tag">07</span>
+  <h2>Page Inventory</h2>
+  <p>Eleven pages, all reachable via clean URLs (no <code>.html</code> in the address bar). The Express server resolves <code>/services</code> to <code>services.html</code> automatically, and 301-redirects any old <code>.html</code> URL to the clean form.</p>
+
+  <table>
+    <tr><th>URL</th><th>File</th><th>Purpose</th></tr>
+    <tr><td><code>/</code></td><td>index.html</td><td>Homepage &mdash; hero, services preview, why us, contact, map.</td></tr>
+    <tr><td><code>/services</code></td><td>services.html</td><td>Six-card services hub linking to detail pages.</td></tr>
+    <tr><td><code>/residential</code></td><td>residential.html</td><td>Residential services detail.</td></tr>
+    <tr><td><code>/commercial</code></td><td>commercial.html</td><td>Commercial / business security detail.</td></tr>
+    <tr><td><code>/automotive</code></td><td>automotive.html</td><td>Automotive / car keys / ignitions detail.</td></tr>
+    <tr><td><code>/safes</code></td><td>safes.html</td><td>Safes &amp; vaults detail.</td></tr>
+    <tr><td><code>/keyless</code></td><td>keyless.html</td><td>Keyless entry / access control detail.</td></tr>
+    <tr><td><code>/self-defense</code></td><td>self-defense.html</td><td>Self-defense products detail.</td></tr>
+    <tr><td><code>/story</code></td><td>story.html</td><td>Brand story, values, credentials.</td></tr>
+    <tr><td><code>/why</code></td><td>why.html</td><td>Why choose us &mdash; trust signals.</td></tr>
+    <tr><td><code>/contact</code></td><td>contact.html</td><td>Contact form, address, hours, map.</td></tr>
+  </table>
+
+  <h3>Common page anatomy</h3>
+  <p>Every page follows the same skeleton, which keeps navigation and branding consistent:</p>
+  <ol>
+    <li><strong>Nav</strong> &mdash; logo, four primary links (Services / Story / Why Us / Contact), phone CTA, mobile hamburger.</li>
+    <li><strong>Mobile overlay</strong> &mdash; full-screen menu toggled by the hamburger.</li>
+    <li><strong>Page hero</strong> &mdash; image background + title + breadcrumb (or a video hero on the homepage).</li>
+    <li><strong>Main content</strong> &mdash; varies per page.</li>
+    <li><strong>Emergency band</strong> &mdash; red strip with the phone CTA.</li>
+    <li><strong>Footer</strong> &mdash; brand line, services list, company links, hours.</li>
+  </ol>
+</section>
+
+<!-- ─── 08 CONTACT FORM ──────────────────────────────────── -->
+<section class="page">
+  <span class="tag">08</span>
+  <h2>Contact Form &amp; Resend</h2>
+  <p>The contact form on <code>/contact</code> sends a real email to <code>service@concordlock.com</code> via Resend. The submission is JS-driven (the form does not reload the page).</p>
+
+  <h3>End-to-end flow</h3>
+  <ol>
+    <li>User fills out the form (Name, Email, Phone, Service, Message).</li>
+    <li>JavaScript intercepts the submit, packs the values into JSON, POSTs to <code>/api/contact</code>.</li>
+    <li>Express server validates the input (required fields, email format, length limits).</li>
+    <li>Server calls Resend's API with the authenticated API key.</li>
+    <li>Resend sends the email <em>from</em> <code>noreply@concordlock.com</code> <em>to</em> <code>service@concordlock.com</code>, with the customer's address as the Reply-To.</li>
+    <li>Server returns <code>{"ok": true}</code>.</li>
+    <li>JS shows a success message and resets the form.</li>
+  </ol>
+
+  <h3>Configuration (fly secrets)</h3>
+  <table>
+    <tr><th>Secret</th><th>Description</th></tr>
+    <tr><td><code>RESEND_API_KEY</code></td><td>The Resend API key. Sensitive &mdash; never committed.</td></tr>
+    <tr><td><code>RESEND_TO</code></td><td>Recipient address (<code>service@concordlock.com</code>).</td></tr>
+    <tr><td><code>RESEND_FROM</code></td><td>Display + sender address (<code>Concord Locksmith Contact &lt;noreply@concordlock.com&gt;</code>).</td></tr>
+  </table>
+
+  <h3>Email receiving</h3>
+  <p>Resend handles <em>sending</em>. <em>Receiving</em> mail at <code>service@concordlock.com</code> depends on the MX records in DNS pointing to a mailbox provider (Google Workspace, Microsoft 365, or similar). If submissions stop landing, check both Resend's "Emails" dashboard (was it sent? was it delivered?) and the mail provider's spam folder.</p>
+
+  <h3>Resend domain verification</h3>
+  <p>The domain <code>concordlock.com</code> is verified in Resend, which means emails are sent with proper DKIM/SPF signatures and are far less likely to be marked as spam. If the domain ever fails re-verification, those records can be re-checked at <code>resend.com</code> → Domains.</p>
+
+  <div class="box">
+    <div class="box-title">Quick check: did a submission go through?</div>
+    <p>1. Resend dashboard → Emails tab → recent sends should show "delivered."<br/>
+    2. Check the inbox at <code>service@concordlock.com</code> (and spam).<br/>
+    3. <code>fly logs -a concordlock</code> &mdash; the server logs Resend errors if the API call failed.</p>
+  </div>
+</section>
+
+<!-- ─── 09 DESIGN SYSTEM ─────────────────────────────────── -->
+<section class="page">
+  <span class="tag">09</span>
+  <h2>Design System</h2>
+  <p>The visual language emphasizes heritage, craft, and trustworthiness. The aesthetic borrows from editorial design (large serif headlines, generous whitespace, restrained color palette) rather than typical "service business" templates.</p>
+
+  <h3>Typography</h3>
+  <table>
+    <tr><th>Family</th><th>Used for</th></tr>
+    <tr><td>Playfair Display (serif)</td><td>H1, H2, decorative headings &mdash; the editorial voice.</td></tr>
+    <tr><td>Oswald (display sans)</td><td>Section tags, condensed labels, navigation accent.</td></tr>
+    <tr><td>DM Serif Display</td><td>Occasional decorative serif accents.</td></tr>
+    <tr><td>DM Sans</td><td>Body text, UI labels, navigation links &mdash; the workhorse.</td></tr>
+    <tr><td>Instrument Serif (italic)</td><td>Italic accent words inside headings.</td></tr>
+  </table>
+
+  <h3>Color palette</h3>
+  <table>
+    <tr><th>Token</th><th>Hex</th><th>Use</th></tr>
+    <tr><td><code>--red</code></td><td>#cf2e2e</td><td>Brand accent, buttons, emergency band, CTA, link color.</td></tr>
+    <tr><td><code>--red-dk</code></td><td>#a02222</td><td>Hover state for red.</td></tr>
+    <tr><td><code>--dark</code></td><td>#1a1a1a</td><td>Primary text, headings.</td></tr>
+    <tr><td><code>--text</code> / <code>--text-mid</code> / <code>--text-light</code></td><td>#2d / #555 / #888</td><td>Body text hierarchy.</td></tr>
+    <tr><td><code>--warm-white</code></td><td>#faf8f4</td><td>Page background where not pure white.</td></tr>
+    <tr><td><code>--cream</code></td><td>#f3efe7</td><td>Secondary background blocks.</td></tr>
+    <tr><td><code>--border</code></td><td>#e2ddd2</td><td>Separators, card outlines.</td></tr>
+  </table>
+
+  <h3>Layout patterns</h3>
+  <ul>
+    <li><strong>Page hero</strong> &mdash; full-width image background, dark overlay, centered title + breadcrumb.</li>
+    <li><strong>Section wrap</strong> &mdash; max-width container with consistent vertical rhythm.</li>
+    <li><strong>Service cards</strong> &mdash; image + numbered label + description + arrow link.</li>
+    <li><strong>Why-grid</strong> &mdash; 4-up numbered cards with subtle borders.</li>
+    <li><strong>Includes-grid</strong> &mdash; 3-up service feature cards with red number accents (used on detail pages).</li>
+    <li><strong>Emergency band</strong> &mdash; bold red strip with phone CTA, repeated near footer on every page.</li>
+  </ul>
+
+  <h3>Voice &amp; copy principles</h3>
+  <ul>
+    <li>Heritage-forward: lean on the 1947 founding date, "three generations," "Concord institution."</li>
+    <li>Honest and plain: no jargon, no hype, no "premium" or "world-class" filler.</li>
+    <li>Trust signals over feature lists: licensed, bonded, BBB, satisfaction guarantee.</li>
+    <li>Phone-first conversion: every page has the phone number visible.</li>
+  </ul>
+</section>
+
+<!-- ─── 10 DEPLOYMENT WORKFLOW ───────────────────────────── -->
+<section class="page">
+  <span class="tag">10</span>
+  <h2>Deployment Workflow</h2>
+  <p>The workflow is intentionally simple: edit files locally, commit to git, push to GitHub for backup, then run <code>fly deploy</code>. There is no CI/CD pipeline (none is needed for this scale).</p>
+
+  <h3>Where the code lives</h3>
+  <dl class="kv">
+    <dt>Repository</dt><dd><code>github.com/B-Blocksmith/BNB-website-Redesign</code></dd>
+    <dt>Organization</dt><dd><code>B-Blocksmith</code> (GitHub Organization &mdash; not a personal account)</dd>
+    <dt>Branch</dt><dd><code>main</code></dd>
+    <dt>Visibility</dt><dd>Private</dd>
+  </dl>
+
+  <h3>The full deploy cycle</h3>
+  <pre><code># 1. Make your changes in the working tree
+# 2. Commit them to git
+git add .
+git commit -m "Describe what changed and why"
+
+# 3. Push to GitHub (backup; doesn't deploy)
+git push origin main
+
+# 4. Deploy to fly.io
+fly deploy</code></pre>
+
+  <h3>What <code>fly deploy</code> does, step by step</h3>
+  <ol>
+    <li>Reads <code>fly.toml</code> to know which app to deploy.</li>
+    <li>Tarballs the local working directory (excluding entries in <code>.dockerignore</code>).</li>
+    <li>Uploads to fly's remote builder (Depot).</li>
+    <li>Builds a Docker image from <code>Dockerfile</code> (downloads <code>node:20-alpine</code>, runs <code>npm install</code>, copies files).</li>
+    <li>Pushes the image to <code>registry.fly.io</code>.</li>
+    <li>Performs a rolling update on the two machines: stops one, replaces it, verifies health, then does the other. Zero downtime if everything goes well.</li>
+    <li>Verifies DNS is correct and the app is reachable.</li>
+  </ol>
+
+  <h3>Rolling back a deploy</h3>
+  <p>If a deploy goes wrong, the previous image is still in the registry. To roll back:</p>
+  <pre><code># Show recent deployments
+fly releases -a concordlock
+
+# Roll back to a specific version (the column labeled VERSION in releases output)
+fly deploy --image registry.fly.io/concordlock:deployment-&lt;ID&gt;</code></pre>
+
+  <h3>Local development</h3>
+  <pre><code># From inside the project folder:
+npm install --omit=dev
+
+# Set the env vars locally and run:
+RESEND_API_KEY=re_... RESEND_TO=service@concordlock.com node server.js
+
+# Site is then at http://localhost:8080</code></pre>
+
+  <p class="meta">Note: a quick static-only preview can also be done with <code>python -m http.server 8080</code>, but the contact form won't work without the Node server.</p>
+</section>
+
+<!-- ─── 11 COSTS ──────────────────────────────────────────── -->
+<section class="page">
+  <span class="tag">11</span>
+  <h2>Costs &amp; Billing</h2>
+  <p>Approximate monthly costs based on a small-business locksmith's expected traffic. All numbers are estimates and depend on actual usage.</p>
+
+  <table>
+    <tr><th>Service</th><th>Plan</th><th>Cost</th><th>Notes</th></tr>
+    <tr><td>Domain registration</td><td>Network Solutions</td><td>~$15&ndash;$30/yr</td><td>Domain only &mdash; separate from the WordPress hosting plan that should be cancelled.</td></tr>
+    <tr><td>DNS hosting</td><td>Cloudflare</td><td>$0</td><td>Free plan. Manages records for <code>concordlock.com</code>. Paid plans add WAF, more analytics &mdash; not needed for this site.</td></tr>
+    <tr><td>Web hosting</td><td>fly.io</td><td>$0&ndash;$5/mo</td><td>Free tier covers low-traffic apps with auto-stop. May be ~$2&ndash;$3/mo if machines stay running often.</td></tr>
+    <tr><td>SSL certificate</td><td>Let's Encrypt</td><td>$0</td><td>Issued and renewed automatically by fly.io.</td></tr>
+    <tr><td>Transactional email</td><td>Resend</td><td>$0</td><td>Free tier includes 3,000 emails/month and 100/day &mdash; far more than a contact form needs.</td></tr>
+    <tr><td>Email receiving</td><td>(your provider)</td><td>varies</td><td>Whatever provider hosts the inbox at <code>service@concordlock.com</code> &mdash; Google Workspace, Microsoft 365, etc.</td></tr>
+    <tr><td>Source code hosting</td><td>GitHub</td><td>$0</td><td>Free for public &amp; small private repos.</td></tr>
+  </table>
+
+  <h3>What to watch</h3>
+  <ul>
+    <li><strong>fly.io billing</strong> &mdash; check <code>fly.io/dashboard/personal/billing</code> if you're curious how much the app actually costs each month. With auto-stop on, expect single-digit dollars.</li>
+    <li><strong>Resend usage</strong> &mdash; <code>resend.com/dashboard</code> shows monthly send counts. The free tier ceiling is 3,000/month; if your contact form ever exceeds that, you'd upgrade to the $20/month plan.</li>
+    <li><strong>Domain renewal</strong> &mdash; Network Solutions auto-renews if you have payment on file. Renewal is annual.</li>
+  </ul>
+</section>
+
+<!-- ─── 12 MAINTENANCE ──────────────────────────────────── -->
+<section class="page">
+  <span class="tag">12</span>
+  <h2>Maintenance &amp; Common Tasks</h2>
+  <p>Specific recipes for the kinds of edits you're most likely to want.</p>
+
+  <h3>Update copy on a page</h3>
+  <ol>
+    <li>Open the relevant <code>.html</code> file in a code editor.</li>
+    <li>Find the text and edit it.</li>
+    <li>Commit and run <code>fly deploy</code>.</li>
+  </ol>
+
+  <h3>Update business hours</h3>
+  <p>Hours appear in multiple places (footer of every page, the <code>/contact</code> details card, the <code>/contact</code> hours table, and similar tables on <code>/index</code> and <code>/story</code>). Search for the day name (e.g., "Tuesday") to find them all.</p>
+
+  <h3>Add or replace an image</h3>
+  <ol>
+    <li>Drop the new image into the <code>images/</code> folder.</li>
+    <li>Update the <code>&lt;img src=&quot;...&quot;&gt;</code> reference in the relevant HTML page.</li>
+    <li>Commit + deploy.</li>
+  </ol>
+
+  <h3>Change the recipient email or sender</h3>
+  <pre><code># Recipient change:
+fly secrets set RESEND_TO=newaddress@concordlock.com -a concordlock
+
+# Sender change (must use a domain verified in Resend):
+fly secrets set "RESEND_FROM=Concord Locksmith &lt;hello@concordlock.com&gt;" -a concordlock</code></pre>
+
+  <h3>Rotate the Resend API key</h3>
+  <ol>
+    <li>In Resend dashboard, revoke the old key and create a new one.</li>
+    <li>Update the fly secret: <code>fly secrets set RESEND_API_KEY=re_NEW... -a concordlock</code></li>
+  </ol>
+
+  <h3>Add a new page</h3>
+  <ol>
+    <li>Copy an existing page (e.g., <code>residential.html</code>) as a template.</li>
+    <li>Edit the title, hero image, and content.</li>
+    <li>Add a link to the new page in the nav and footer of <em>every</em> page (or at least the ones a user would arrive on).</li>
+    <li>Commit + deploy.</li>
+  </ol>
+
+  <h3>Check the live site is healthy</h3>
+  <pre><code>fly status -a concordlock        # machine state
+fly logs -a concordlock          # live logs
+curl -I https://concordlock.com  # HTTP 200 expected</code></pre>
+</section>
+
+<!-- ─── 13 GOTCHAS ──────────────────────────────────────── -->
+<section class="page">
+  <span class="tag">13</span>
+  <h2>Gotchas &amp; Known Quirks</h2>
+
+  <h3>1. Cold-start delay on the first visit</h3>
+  <p>Because <code>auto_stop_machines</code> is enabled, the fly.io machines stop after a few minutes of no traffic. The first request after idle takes ~1&ndash;2 seconds to wake up a machine. Subsequent requests are normal speed. This is expected behavior, not a bug. If you want zero cold starts, set <code>min_machines_running = 1</code> in <code>fly.toml</code> &mdash; but that costs more.</p>
+
+  <h3>2. Browser cache holds old assets</h3>
+  <p>After you deploy a change, your own browser may show the old version because it cached <code>main.js</code> or <code>style.css</code>. A hard refresh (<strong>Ctrl+Shift+R</strong> on Windows, <strong>Cmd+Shift+R</strong> on Mac) bypasses the cache. Customers without dev tools will get the new version naturally as their cache expires.</p>
+
+  <h3>3. The hero video on the homepage</h3>
+  <p>The hero video is hotlinked from Pexels' CDN, not stored locally. If Pexels ever changes their URL structure or removes the clip, the hero will break visually. If that happens, swap to a different clip in <code>index.html</code> (the <code>&lt;source&gt;</code> tag) and in <code>main.js</code> (the playlist array).</p>
+
+  <h3>4. The contact form requires the Node server</h3>
+  <p>Static-file-only previews (e.g., opening <code>contact.html</code> directly in a browser, or <code>python -m http.server</code>) will <em>show</em> the form but submissions will fail because there's no <code>/api/contact</code> handler. Always test contact form changes with the actual Node server running.</p>
+
+  <h3>5. URL casing matters on the server but is normalized in browsers</h3>
+  <p><code>/Services</code> is technically a different URL than <code>/services</code> on the server. Browsers usually preserve the case from links, so as long as all internal links use lowercase, this isn't an issue. Just don't manually type capitalized URLs into the address bar.</p>
+
+  <h3>6. The Google Maps iframe uses a baked-in lat/long</h3>
+  <p>The embedded Google Maps URL on <code>/index</code> and <code>/contact</code> renders by latitude/longitude, with "1804 Colfax Street, Concord, CA" as the search hint. If the displayed address ever changes, update both the visible address and the search hint inside the iframe URL.</p>
+
+  <h3>7. Direct .html URLs redirect</h3>
+  <p>If you share an old link like <code>concordlock.com/services.html</code>, it 301-redirects to <code>concordlock.com/services</code>. This is intentional and good for SEO; just don't be surprised by the redirect.</p>
+</section>
+
+<!-- ─── 14 CLOUDFLARE ────────────────────────────────────── -->
+<section class="page">
+  <span class="tag">14</span>
+  <h2>Cloudflare's role (DNS only, today)</h2>
+  <p>Cloudflare is in your stack as the <strong>DNS host</strong>. It is <em>not</em> in the request path for actual HTTPS traffic to the site &mdash; that goes directly from the user to fly.io after the DNS lookup.</p>
+
+  <h3>What Cloudflare is doing right now</h3>
+  <ul>
+    <li><strong>Authoritative DNS</strong> for <code>concordlock.com</code> on the free plan. Anyone resolving the domain gets their answer from Cloudflare's nameservers.</li>
+    <li><strong>Hosting all DNS records</strong> &mdash; web (A/AAAA/CNAME), email (MX, TXT/SPF, DKIM, DMARC), and any others.</li>
+    <li><strong>A nicer dashboard</strong> than Network Solutions for editing records, with faster propagation.</li>
+  </ul>
+
+  <h3>What Cloudflare is NOT doing right now</h3>
+  <ul>
+    <li>Not proxying or caching site content (records are "DNS only" / gray cloud).</li>
+    <li>Not providing DDoS protection at the edge for HTTPS traffic.</li>
+    <li>Not running a Web Application Firewall in front of the site.</li>
+    <li>Not collecting traffic analytics for the site.</li>
+  </ul>
+
+  <h3>How to enable Cloudflare's proxy / CDN if you want to</h3>
+  <p>Switching from "DNS only" to "Proxied" (gray cloud → orange cloud) routes traffic through Cloudflare's network. To do this safely:</p>
+  <ol>
+    <li>In Cloudflare, go to <strong>SSL/TLS</strong> → set encryption mode to <strong>Full (Strict)</strong>. This makes Cloudflare verify fly.io's Let's Encrypt cert on the back end.</li>
+    <li>In Cloudflare's DNS panel, click each web record (the A, AAAA on apex; the CNAME on www) and toggle the proxy status to <strong>Proxied</strong> (orange cloud).</li>
+    <li>Wait a few minutes. The site will now resolve to Cloudflare's IPs (e.g., <code>104.21.x.x</code>) instead of fly.io's IPs. Cloudflare terminates SSL and forwards to fly.io.</li>
+    <li>Test: <code>curl -I https://concordlock.com</code> should now show <code>cf-ray</code> and <code>server: cloudflare</code> in the headers.</li>
+  </ol>
+
+  <h3>Should you enable proxy mode?</h3>
+  <p>For a small marketing site like this, the gain is modest. fly.io already has anycast edge, Let's Encrypt is already auto-renewed, traffic is low. Enabling Cloudflare's proxy adds:</p>
+  <ul>
+    <li>Edge caching of static files (CSS, JS, images)</li>
+    <li>DDoS protection</li>
+    <li>Bot/spam mitigation if the contact form ever attracts abuse</li>
+    <li>Traffic analytics in the Cloudflare dashboard</li>
+  </ul>
+  <p class="meta">It's a low-cost thing to flip on later if you ever notice slow loads, bot traffic, or want analytics. There's no urgency today.</p>
+
+  <div class="footer-mark">
+    <span>Concord Locksmith &mdash; Site Documentation</span>
+    <span>End of document</span>
+  </div>
+</section>
+
+</body>
+</html>
