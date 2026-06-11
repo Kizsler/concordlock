@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { Resend } = require('resend');
 
 const PORT = process.env.PORT || 8080;
@@ -16,14 +17,58 @@ const app = express();
 
 app.use(express.json({ limit: '64kb' }));
 
+// Canonical host: redirect www → apex
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (host.toLowerCase().startsWith('www.')) {
+    return res.redirect(301, 'https://' + host.slice(4) + req.url);
+  }
+  next();
+});
+
+// Canonical paths: strip trailing slashes (except root)
+app.use((req, res, next) => {
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    const query = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+    return res.redirect(301, req.path.replace(/\/+$/, '') + query);
+  }
+  next();
+});
+
 // Canonical clean URLs: redirect /foo.html → /foo
 app.get(/^\/(.+)\.html$/i, (req, res) => {
   const target = '/' + req.params[0] + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '');
   res.redirect(301, target);
 });
 
-// Static, with .html extension auto-resolution: /services → services.html
-app.use(express.static(__dirname, { extensions: ['html'] }));
+// Legacy flat service URLs → /services/<slug>
+const SERVICE_SLUGS = ['residential', 'commercial', 'automotive', 'safes', 'keyless', 'self-defense'];
+app.get(SERVICE_SLUGS.map(s => '/' + s), (req, res) => {
+  res.redirect(301, '/services' + req.path);
+});
+
+// /services is both a page (services.html) and a directory of service pages —
+// serve the hub page explicitly so the static middleware's directory redirect
+// (/services → /services/) can't fight the trailing-slash stripper above.
+app.get('/services', (req, res) => {
+  res.sendFile(path.join(__dirname, 'services.html'));
+});
+
+// Static, with .html extension auto-resolution: /services/safes → services/safes.html
+// redirect:false — directory slash-redirects would loop with the stripper above
+app.use(express.static(__dirname, {
+  extensions: ['html'],
+  redirect: false,
+  setHeaders(res, filePath) {
+    if (/\.(png|jpe?g|webp|ico|svg|mp4)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=2592000');
+    } else if (/\.(css|js)$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+    } else if (/\.html$/i.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    }
+  },
+}));
 
 app.post('/api/contact', async (req, res) => {
   const body = req.body || {};

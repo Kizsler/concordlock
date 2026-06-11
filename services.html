@@ -9,11 +9,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Oswald:wght@400;500;600;700&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://concordlock.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://concordlock.com/services"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -21,7 +41,7 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="logo.png" alt="Concord Locksmith" class="logo-img" />
+        <img src="/logo.png" alt="Concord Locksmith" class="logo-img" />
         <div class="logo-text">
           <span class="logo-name">Concord Locksmith</span>
           <span class="logo-since">Est. 1947</span>
@@ -94,9 +114,9 @@
     <div class="section-wrap">
       <div class="services-hub-grid">
 
-        <a href="/residential" class="svc-hub-card">
+        <a href="/services/residential" class="svc-hub-card">
           <div class="svc-hub-img">
-            <img src="images/residential-locksmith.jpg" alt="Residential locksmith services" loading="lazy" />
+            <img src="/images/residential-locksmith.jpg" alt="Residential locksmith services" loading="lazy" />
             <span class="svc-hub-num">01</span>
           </div>
           <div class="svc-hub-body">
@@ -106,9 +126,9 @@
           </div>
         </a>
 
-        <a href="/commercial" class="svc-hub-card">
+        <a href="/services/commercial" class="svc-hub-card">
           <div class="svc-hub-img">
-            <img src="images/commercial-locksmith.jpg" alt="Commercial locksmith services" loading="lazy" />
+            <img src="/images/commercial-locksmith.jpg" alt="Commercial locksmith services" loading="lazy" />
             <span class="svc-hub-num">02</span>
           </div>
           <div class="svc-hub-body">
@@ -118,9 +138,9 @@
           </div>
         </a>
 
-        <a href="/automotive" class="svc-hub-card">
+        <a href="/services/automotive" class="svc-hub-card">
           <div class="svc-hub-img">
-            <img src="images/automotive-locksmith.jpg" alt="Automotive locksmith services" loading="lazy" />
+            <img src="/images/automotive-locksmith.jpg" alt="Automotive locksmith services" loading="lazy" />
             <span class="svc-hub-num">03</span>
           </div>
           <div class="svc-hub-body">
@@ -130,9 +150,9 @@
           </div>
         </a>
 
-        <a href="/safes" class="svc-hub-card">
+        <a href="/services/safes" class="svc-hub-card">
           <div class="svc-hub-img">
-            <img src="images/safes.jpg" alt="Safes and vaults" loading="lazy" />
+            <img src="/images/safes.jpg" alt="Safes and vaults" loading="lazy" />
             <span class="svc-hub-num">04</span>
           </div>
           <div class="svc-hub-body">
@@ -142,9 +162,9 @@
           </div>
         </a>
 
-        <a href="/keyless" class="svc-hub-card">
+        <a href="/services/keyless" class="svc-hub-card">
           <div class="svc-hub-img">
-            <img src="images/keycard-access-control.jpg" alt="Keyless entry systems" loading="lazy" />
+            <img src="/images/keycard-access-control.jpg" alt="Keyless entry systems" loading="lazy" />
             <span class="svc-hub-num">05</span>
           </div>
           <div class="svc-hub-body">
@@ -154,9 +174,9 @@
           </div>
         </a>
 
-        <a href="/self-defense" class="svc-hub-card">
+        <a href="/services/self-defense" class="svc-hub-card">
           <div class="svc-hub-img">
-            <img src="images/mace-stun-guns.jpg" alt="Self defense products" loading="lazy" />
+            <img src="/images/mace-stun-guns.jpg" alt="Self defense products" loading="lazy" />
             <span class="svc-hub-num">06</span>
           </div>
           <div class="svc-hub-body">
@@ -190,7 +210,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="logo.png" alt="Concord Locksmith" class="logo-img logo-img-sm" />
+          <img src="/logo.png" alt="Concord Locksmith" class="logo-img logo-img-sm" />
           <span class="fl-name">Concord Locksmith</span>
         </div>
         <p>Trusted locksmith services in Contra Costa and surrounding counties since 1947. Licensed, bonded, family-owned.</p>
@@ -198,12 +218,12 @@
       </div>
       <div class="footer-col">
         <h5>Services</h5>
-        <a href="/residential">Residential</a>
-        <a href="/commercial">Commercial</a>
-        <a href="/automotive">Automotive</a>
-        <a href="/safes">Safes &amp; Vaults</a>
-        <a href="/keyless">Keyless Entry</a>
-        <a href="/self-defense">Self Defense</a>
+        <a href="/services/residential">Residential</a>
+        <a href="/services/commercial">Commercial</a>
+        <a href="/services/automotive">Automotive</a>
+        <a href="/services/safes">Safes &amp; Vaults</a>
+        <a href="/services/keyless">Keyless Entry</a>
+        <a href="/services/self-defense">Self Defense</a>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
@@ -216,7 +236,7 @@
         <p>Mon&ndash;Wed &amp; Fri: 8:30&ndash;5pm</p>
         <p>Thu: 9:30&ndash;5pm</p>
         <p>Sat&ndash;Sun: Closed</p>
-        <p class="footer-emg"><em>Limited after-hours emergency service available</em></p>
+        <p class="footer-emg"><em>Locked out after hours? Call us &mdash; emergency service available</em></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -225,6 +245,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

@@ -1847,3 +1847,21 @@ a.cd-value-dark:hover {
   .footer { padding: 3rem 1.25rem 1.5rem; }
   .footer-bottom { font-size: 0.65rem; }
 }
+
+/* ── MOBILE TAP TARGETS & OVERFLOW FIXES (2026-06 SEO audit) ── */
+@media (max-width: 768px) {
+  .hamburger {
+    min-width: 48px;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+  .svc-link { padding: 14px 0; }
+  .footer-phone,
+  .footer-col a { display: inline-block; padding: 6px 0; }
+  .contact-grid > * { min-width: 0; }
+  .contact-map,
+  .map-frame,
+  .map-frame iframe { max-width: 100%; }
+  body { overflow-x: hidden; }
+}

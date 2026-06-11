@@ -62,11 +62,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Oswald:wght@400;500;600;700&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
@@ -74,7 +74,7 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="logo.png" alt="Concord Locksmith" class="logo-img" />
+        <img src="/logo.png" alt="Concord Locksmith" class="logo-img" />
         <div class="logo-text">
           <span class="logo-name">Concord Locksmith</span>
           <span class="logo-since">Est. 1947</span>
@@ -117,8 +117,8 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <video id="heroVideo" autoplay muted playsinline>
-        <source src="https://videos.pexels.com/video-files/35999369/15264738_2560_1440_60fps.mp4" type="video/mp4" />
+      <video id="heroVideo" autoplay muted playsinline preload="metadata" poster="/images/hero-poster.jpg">
+        <source src="/images/hero-video.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
     </div>
@@ -202,7 +202,7 @@
       <div class="services-grid">
         <div class="svc-card">
           <div class="svc-img">
-            <img src="images/residential-locksmith.jpg" alt="Residential locksmith" loading="lazy" />
+            <img src="/images/residential-locksmith.jpg" alt="Residential locksmith" loading="lazy" />
           </div>
           <div class="svc-body">
             <span class="svc-num">01</span>
@@ -220,7 +220,7 @@
 
         <div class="svc-card">
           <div class="svc-img">
-            <img src="images/commercial-locksmith.jpg" alt="Commercial locksmith" loading="lazy" />
+            <img src="/images/commercial-locksmith.jpg" alt="Commercial locksmith" loading="lazy" />
           </div>
           <div class="svc-body">
             <span class="svc-num">02</span>
@@ -238,7 +238,7 @@
 
         <div class="svc-card">
           <div class="svc-img">
-            <img src="images/automotive-locksmith.jpg" alt="Automotive locksmith" loading="lazy" />
+            <img src="/images/automotive-locksmith.jpg" alt="Automotive locksmith" loading="lazy" />
           </div>
           <div class="svc-body">
             <span class="svc-num">03</span>
@@ -256,7 +256,7 @@
 
         <div class="svc-card">
           <div class="svc-img">
-            <img src="images/safes.jpg" alt="Safes and security" loading="lazy" />
+            <img src="/images/safes.jpg" alt="Safes and security" loading="lazy" />
           </div>
           <div class="svc-body">
             <span class="svc-num">04</span>
@@ -297,7 +297,7 @@
         <div class="story-photos">
           <div class="story-main-photo">
             <img
-              src="images/concord-locksmith-storefront.jpg"
+              src="/images/concord-locksmith-storefront.jpg"
               alt="Concord Locksmith storefront"
               loading="lazy"
             />
@@ -483,7 +483,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="logo.png" alt="Concord Locksmith" class="logo-img logo-img-sm" />
+          <img src="/logo.png" alt="Concord Locksmith" class="logo-img logo-img-sm" />
           <span class="fl-name">Concord Locksmith</span>
         </div>
         <p>Trusted locksmith services in Contra Costa and surrounding counties since 1947. Licensed, bonded, family-owned.</p>
@@ -491,12 +491,12 @@
       </div>
       <div class="footer-col">
         <h5>Services</h5>
-        <a href="/residential">Residential</a>
-        <a href="/commercial">Commercial</a>
-        <a href="/automotive">Automotive</a>
-        <a href="/safes">Safes &amp; Vaults</a>
-        <a href="/keyless">Keyless Entry</a>
-        <a href="/self-defense">Self Defense</a>
+        <a href="/services/residential">Residential</a>
+        <a href="/services/commercial">Commercial</a>
+        <a href="/services/automotive">Automotive</a>
+        <a href="/services/safes">Safes &amp; Vaults</a>
+        <a href="/services/keyless">Keyless Entry</a>
+        <a href="/services/self-defense">Self Defense</a>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
@@ -518,6 +518,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>
