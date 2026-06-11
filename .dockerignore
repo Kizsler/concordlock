@@ -5,3 +5,5 @@ npm-debug.log
 .playwright-mcp
 .env
 .env.*
+mobile-*.png
+logo-signature.png
