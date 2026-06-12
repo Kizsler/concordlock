@@ -35,6 +35,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Google site-verification files must serve 200 at their exact .html URL —
+// exempt them from the clean-URL redirect below
+app.get(/^\/google[0-9a-f]+\.html$/i, (req, res) => {
+  res.sendFile(path.join(__dirname, req.path.slice(1)));
+});
+
 // Canonical clean URLs: redirect /foo.html → /foo
 app.get(/^\/(.+)\.html$/i, (req, res) => {
   const target = '/' + req.params[0] + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '');
