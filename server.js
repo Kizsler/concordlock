@@ -53,11 +53,14 @@ app.get(SERVICE_SLUGS.map(s => '/' + s), (req, res) => {
   res.redirect(301, '/services' + req.path);
 });
 
-// /services is both a page (services.html) and a directory of service pages —
-// serve the hub page explicitly so the static middleware's directory redirect
-// (/services → /services/) can't fight the trailing-slash stripper above.
+// /services and /areas are each both a page (*.html) and a directory of child
+// pages — serve the hub page explicitly so the static middleware's directory
+// redirect can't fight the trailing-slash stripper above.
 app.get('/services', (req, res) => {
   res.sendFile(path.join(__dirname, 'services.html'));
+});
+app.get('/areas', (req, res) => {
+  res.sendFile(path.join(__dirname, 'areas.html'));
 });
 
 // Static, with .html extension auto-resolution: /services/safes → services/safes.html
